@@ -7,7 +7,11 @@ const port = process.env.PORT || 3000;
 app.use(express.json());
 
 // Basic route
-app.get("/", (req, res) => {
+
+type Request = express.Request;
+type Response = express.Response;
+
+app.get("/", (req: Request, res: Response) => {
   res.send("Hello, world!");
 });
 
