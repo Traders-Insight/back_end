@@ -1,14 +1,27 @@
-/**
- * ESLint configuration for the project.
- *
- * See https://eslint.style and https://typescript-eslint.io for additional linting options.
- */
-// @ts-check
+import reactPlugin from "eslint-plugin-react";
+import typescriptEslintPlugin from "@typescript-eslint/eslint-plugin";
+import reactRecommended from "eslint-plugin-react/configs/recommended.js";
+import typescriptRecommended from "@typescript-eslint/eslint-plugin/dist/configs/recommended";
 
 export default [
   {
     ignores: [".vscode-test", "out"],
     files: ["**/*.js", "**/*.jsx", "**/*.ts", "**/*.tsx"],
+    languageOptions: {
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: "module",
+      },
+      globals: {
+        browser: true,
+        node: true,
+        es6: true,
+      },
+    },
+    plugins: {
+      react: reactPlugin,
+      "@typescript-eslint": typescriptEslintPlugin,
+    },
     rules: {
       "no-unused-vars": "warn",
       "no-console": "off",
@@ -16,24 +29,12 @@ export default [
       quotes: ["error", "single"],
       indent: ["error", 2],
     },
-    parserOptions: {
-      ecmaVersion: 2020,
-      sourceType: "module",
-    },
-    env: {
-      browser: true,
-      node: true,
-      es6: true,
-    },
-    extends: [
-      "eslint:recommended",
-      "plugin:react/recommended",
-      "plugin:@typescript-eslint/recommended",
-    ],
     settings: {
       react: {
         version: "detect",
       },
     },
   },
+  reactRecommended,
+  typescriptRecommended,
 ];
