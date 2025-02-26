@@ -5,11 +5,12 @@
   "directories": {
     "test": "tests"
   },
+  "type": "module",
   "scripts": {
     "start": "ts-node src/app.ts",
     "dev": "nodemon src/app.ts",
     "build": "tsc",
-    "lint": "eslint",
+    "lint": "eslint --config eslint.config.js .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -38,7 +39,9 @@
   "dependencies": {
     "@types/vscode": "^1.97.0",
     "@typescript-eslint/eslint-plugin": "^8.25.0",
+    "@typescript-eslint/parser": "^8.25.0",
     "eslint": "^9.21.0",
+    "eslint-plugin-react": "^7.37.4",
     "express": "^4.21.2",
     "vscode-test": "^1.6.1"
   }
